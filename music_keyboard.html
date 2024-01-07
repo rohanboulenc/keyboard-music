@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <style>
+        body {
+            background-color: rgb(73, 73, 73);
+        }
+        button {
+            
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <label for="detune-slider">Detune</label>
+    <input type="range" id="detune-slider" min="0" max="500" value="60" step="20">
+</div>    
+<div>
+    <label for="delay-slider">Delay</label>
+    <input type="range" id="delay-slider" min="0" max="5000" value="800" step="200">
+</div>
+<div>
+    <label for="shape-slider" id="shape-label">triangle</label>
+    <input type="range" id="shape-slider" min="1" max="4" value="4" step="1">
+</div>
+<div>
+    <button id="start_button">Start</button>
+</div>
+
+    <script src="music_keyboard.js"></script>
+</body>
+</html>
