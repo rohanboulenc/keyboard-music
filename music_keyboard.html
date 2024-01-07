@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music</title>
-    <style>
-        body {
-            background-color: rgb(73, 73, 73);
-        }
-        button {
-            
-        }
-    </style>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Music</title>
+	<style>
+		body {
+			background-color: rgb(73, 73, 73);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 20px;
+			font-family: Arial, sans-serif;
+		}
+		div {
+			width: 300px;
+			display: flex;
+			justify-content: space-between;
+		}
+		#shape-label, #shape-label2 {
+			text-transform: capitalize;
+		}
+	</style>
 </head>
 <body>
 
-<div>
-    <label for="detune-slider">Detune</label>
-    <input type="range" id="detune-slider" min="0" max="500" value="60" step="20">
-</div>    
-<div>
-    <label for="delay-slider">Delay</label>
-    <input type="range" id="delay-slider" min="0" max="5000" value="800" step="200">
-</div>
-<div>
-    <label for="shape-slider" id="shape-label">triangle</label>
-    <input type="range" id="shape-slider" min="1" max="4" value="4" step="1">
-</div>
-<div>
-    <button id="start_button">Start</button>
-</div>
+	<h1>Music Keyboard</h1>
 
-    <script src="music_keyboard.js"></script>
+	<div>
+		<button id="start_button">Start</button>
+	</div>
+	<div>
+		<label for="detune-slider">Detune</label>
+		<input type="range" id="detune-slider" min="0" max="500" value="60" step="20">
+	</div>    
+	<div>
+		<label for="delay-slider">Delay</label>
+		<input type="range" id="delay-slider" min="0" max="5000" value="800" step="200">
+	</div>
+	<div>
+		<label for="shape-slider" id="shape-label">Triangle</label>
+		<input type="range" id="shape-slider" min="1" max="4" value="4" step="1">
+	</div>
+	<div>
+		<label for="shape-slider2" id="shape-label2">Triangle</label>
+		<input type="range" id="shape-slider2" min="1" max="4" value="4" step="1">
+	</div>
+
+	<script src="music_keyboard.js"></script>
 </body>
 </html>

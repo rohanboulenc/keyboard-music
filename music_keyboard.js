@@ -22,7 +22,7 @@ let keys = [
 	{ key:"9",			fq:415.30, 	name:"g#" }
 ]
 
-const sounds_count = 20
+const sounds_count = 20	
 let sounds = []
 
 const settings = {
@@ -39,6 +39,12 @@ document.getElementById("start_button").addEventListener("click", start);
 document.getElementById("detune-slider").addEventListener("change", set_detune)
 document.getElementById("delay-slider").addEventListener("change", set_delay)
 document.getElementById("shape-slider").addEventListener("change", set_shape)
+document.getElementById("shape-slider2").addEventListener("change", set_shape)
+
+document.getElementById("detune-slider").addEventListener("keydown", evt => { evt.preventDefault(); })
+document.getElementById("delay-slider").addEventListener("keydown", evt => { evt.preventDefault(); })
+document.getElementById("shape-slider").addEventListener("keydown", evt => { evt.preventDefault(); })
+document.getElementById("shape-slider2").addEventListener("keydown", evt => { evt.preventDefault(); })
 
 
 // create web audio api context
@@ -68,11 +74,9 @@ function keydown(evt) {
 
 	let sound = null;
 	let key = null;
-
 	console.log(evt.key)
 
 	// finds the object of the key that was presssed
-
 	for (let i = 0; i < keys.length; i++) {
 		if (keys[i].key === evt.key) {
 			key = keys[i];
@@ -85,7 +89,6 @@ function keydown(evt) {
 	}
 
 	// checks if any of the oscillators are connected
-
 	for (let i = 0; i < sounds.length; i++) {
 		if (sounds[i].is_connected === false) {
 			sound = sounds[i];
@@ -100,7 +103,8 @@ function keydown(evt) {
 
 	sound.osc.frequency.value = key.fq;
 	sound.osc2.frequency.value = key.fq;
-
+	sound.osc.type = settings.shape1;
+	sound.osc2.type = settings.shape2;
 
 	play(sound);
 
@@ -126,24 +130,33 @@ function set_delay(evt) {
 function set_shape(evt) {
 
 	let slider_value = evt.currentTarget.value
-
-	console.log(slider_value)
+	let shape_value = "";
 
 	if (slider_value === "1") {
-		settings.shape1 = "sine";
+		shape_value = "sine";
 	}
-	if (slider_value === "2") {
-		settings.shape1 = "square";
+	else if (slider_value === "2") {
+		shape_value = "square";
 	}
-	if (slider_value === "3") {
-		settings.shape1 = "sawtooth";
+	else if (slider_value === "3") {
+		shape_value = "sawtooth";
 	}
-	if (slider_value === "4") {
-		settings.shape1 = "triangle";
+	else if (slider_value === "4") {
+		shape_value = "triangle";
+	}		
+
+	if (evt.currentTarget.id === "shape-slider") {
+		settings.shape1 = shape_value
+	}
+	else {
+		settings.shape2 = shape_value
 	}
 
+
 	let label = document.getElementById("shape-label");
+	let label2 = document.getElementById("shape-label2");
 	label.innerHTML = settings.shape1;
+	label2.innerHTML = settings.shape2;
 
 }
 
